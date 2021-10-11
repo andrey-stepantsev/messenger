@@ -11,43 +11,43 @@
             <h4 class="text-center mb-3">Регистрация</h4>
             <div class="card">
                 <div class="card-body">
-                    <form>
+                    <form th:action="@{/registration/create}" th:object="${registrationForm}" method="POST">
                         <div class="mb-3">
                             <label class="form-label" for="firstName">Имя</label>
-                            <input type="text" class="form-control" id="firstName">
+                            <input th:field="*{firstName}" type="text" class="form-control" required="true">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="lastName">Фамилия</label>
-                            <input type="text" class="form-control" id="lastName">
+                            <input th:field="*{lastName}" type="text" class="form-control" required="true">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="age">Возраст</label>
-                            <input type="number" class="form-control" id="age">
+                            <input th:field="*{age}" type="number" class="form-control" required="true" min="18" max="100">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="sex">Пол</label>
-                            <select class="form-select" id="sex">
-                                <option selected>Выберите из списка</option>
-                                <option value="1">Мужской</option>
-                                <option value="2">Женский</option>
+                            <select th:field="*{sexType.id}" class="form-select" required="true">
+                                <option value="" selected>Выберите из списка</option>
+                                <option th:each="sexType : ${sexTypes}" th:value="${sexType.id}" th:text="${sexType.value}"></option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="city">Город</label>
-                            <input type="text" class="form-control" id="city">
+                            <input th:field="*{city}" type="text" class="form-control" required="true">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="interests">Интересы</label>
-                            <textarea class="form-control" id="interests"></textarea>
+                            <textarea th:field="*{interests}" class="form-control"></textarea>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="username">Логин</label>
-                            <input type="text" class="form-control" id="username">
+                            <label class="form-label" for="login">Логин</label>
+                            <input th:field="*{login}" type="text" class="form-control" required="true" minlength="3" pattern=".*\S+.*">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="password">Пароль</label>
-                            <input type="password" class="form-control" id="password">
+                            <input th:field="*{password}" type="password" class="form-control" required="true" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Пароль должен содержать как минимум одну цифру, одну прописную и одну заглавную буквы, длиной не менее 8 символов.">
                         </div>
+                        <div th:if="${error}" th:text="${error}" class="text-danger mb-3"></div>
                         <button type="submit" class="btn btn-primary w-100 mb-2">
                             <i class="bi bi-person-check"></i>
                             <span class="mx-1">Зарегистрироваться</span>
