@@ -2,15 +2,15 @@
 <html lang="ru">
 <head>
     <title>Регистрация</title>
-    <meta th:include="fragments :: head-content"/>
+    <meta th:include="common :: head-content"/>
 </head>
 <body>
 <div class="container-fluid h-100">
     <div class="row align-items-center justify-content-center h-100">
         <div class="col-3">
-            <h4 class="text-center mb-3">Регистрация</h4>
             <div class="card">
-                <div class="card-body">
+                <div class="card-body p-4">
+                    <h4 class="text-center">Регистрация</h4>
                     <form action="/registration/process" method="POST" th:object="${registrationForm}">
                         <div class="mb-3">
                             <label class="form-label" for="firstName">Имя</label>
@@ -43,12 +43,12 @@
                             <label class="form-label" for="login">Логин</label>
                             <input th:field="*{login}" type="text" class="form-control" required="true" minlength="3" pattern=".*\S+.*">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label class="form-label" for="password">Пароль</label>
                             <input th:field="*{password}" type="password" class="form-control" required="true" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Пароль должен содержать как минимум одну цифру, одну прописную и одну заглавную буквы, длиной не менее 8 символов.">
                         </div>
-                        <div th:if="${error}" th:text="${error}" class="text-danger text-center mb-3"></div>
-                        <button type="submit" class="btn btn-primary w-100 mb-2">
+                        <div th:if="${error}" th:text="${error}" class="text-danger text-center mb-4"></div>
+                        <button type="submit" class="btn btn-dark w-100 mb-2">
                             <i class="bi bi-person-check"></i>
                             <span class="mx-1">Зарегистрироваться</span>
                         </button>
@@ -63,5 +63,4 @@
     </div>
 </div>
 </body>
-<script th:src="@{/js/registration.js}"></script>
 </html>

@@ -1,0 +1,26 @@
+<div th:fragment="search-new-friends-modal">
+    <div id="search-new-friends-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Поиск новых друзей</h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body pb-0">
+                    <input type="text" class="form-control mb-3" id="js-search-new-friends" placeholder="Найти по логину"/>
+                    <div class="list-group list-group-flush d-none" id="js-search-result">
+                        <div class="list-group-item" id="js-search-result-header">
+                            <p class="text-center mb-1">Результаты поиска</p>
+                        </div>
+                        <div class="list-group-item d-none" id="js-search-result-empty">
+                            <p class="text-center text-muted mb-1">Пользователь не найден</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

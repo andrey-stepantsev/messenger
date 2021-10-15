@@ -34,7 +34,7 @@ public class RegistrationController {
         val sexTypes = sexTypeService.getSexTypes();
         model.addAttribute("sexTypes", sexTypes);
 
-        return "registration";
+        return "pages/registration";
     }
 
     @PostMapping("/registration/process")

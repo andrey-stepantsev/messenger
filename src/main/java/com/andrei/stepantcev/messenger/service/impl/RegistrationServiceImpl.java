@@ -2,7 +2,9 @@ package com.andrei.stepantcev.messenger.service.impl;
 
 import com.andrei.stepantcev.messenger.model.RegistrationForm;
 import com.andrei.stepantcev.messenger.service.RegistrationService;
+import com.andrei.stepantcev.messenger.utils.SQLUtils;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.val;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,9 +19,9 @@ public class RegistrationServiceImpl implements RegistrationService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
+    @SneakyThrows
     @Transactional
     public void register(final RegistrationForm registrationForm) {
-
         val firstName = registrationForm.getFirstName();
         val lastName = registrationForm.getLastName();
         val age = registrationForm.getAge();
@@ -29,9 +31,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         val login = registrationForm.getLogin();
         val password = registrationForm.getPassword();
         val passwordEncoded = passwordEncoder.encode(password);
-
-        val query = "INSERT INTO USER (FIRST_NAME, LAST_NAME, AGE, SEX_TYPE_ID, CITY, INTERESTS, LOGIN, PASSWORD) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
+        val query = SQLUtils.getQuery("registration");
         jdbcTemplate.update(query, firstName, lastName, age, sexTypeId, city, interests, login, passwordEncoded);
     }
 }
