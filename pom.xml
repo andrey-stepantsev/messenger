@@ -73,6 +73,9 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <profiles>
+                        <profile>prod</profile>
+                    </profiles>
                 </configuration>
             </plugin>
         </plugins>
