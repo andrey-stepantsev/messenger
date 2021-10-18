@@ -1,6 +1,6 @@
 package com.andrei.stepantcev.messenger.controller;
 
-import com.andrei.stepantcev.messenger.model.UserRequestBody;
+import com.andrei.stepantcev.messenger.model.FriendRequestBody;
 import com.andrei.stepantcev.messenger.model.UsersListRow;
 import com.andrei.stepantcev.messenger.service.UserService;
 import java.util.List;
@@ -25,15 +25,15 @@ public class FriendsController {
 
     @GetMapping("/friends/search/new")
     @ResponseBody
-    public List<UsersListRow> searchUsers(final @RequestParam String searchLogin, final @AuthenticationPrincipal UserDetails userDetails) {
+    public List<UsersListRow> searchNewFriends(final @RequestParam String searchLogin, final @AuthenticationPrincipal UserDetails userDetails) {
         val userLogin = userDetails.getUsername();
         return userService.searchNewFriends(userLogin, searchLogin);
     }
 
     @PostMapping("/friends/add")
     @ResponseStatus(HttpStatus.OK)
-    public void addFriend(final @RequestBody UserRequestBody requestBody, final @AuthenticationPrincipal UserDetails userDetails) {
-        val friendId = requestBody.getUserId();
+    public void addFriend(final @RequestBody FriendRequestBody requestBody, final @AuthenticationPrincipal UserDetails userDetails) {
+        val friendId = requestBody.getFriendId();
         val userLogin = userDetails.getUsername();
         userService.addFriend(userLogin, friendId);
     }

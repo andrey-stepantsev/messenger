@@ -38,7 +38,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration/process")
-    public String createRegistration(final @ModelAttribute RegistrationForm registrationForm, final RedirectAttributes redirectAttributes) {
+    public String registrationProcess(final @ModelAttribute RegistrationForm registrationForm, final RedirectAttributes redirectAttributes) {
 
         val login = registrationForm.getLogin();
         val isLoginExists = userService.checkUserExists(login);

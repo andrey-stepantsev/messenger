@@ -43,12 +43,12 @@ const createSearchResultRow = (user) => (
 const addFriend = (event) => {
 
     const button = $(event.currentTarget);
-    const userId = button.attr("attr-id");
+    const friendId = button.attr("attr-id");
 
     $.ajax({
         url: "/friends/add",
         method: "POST",
-        data: JSON.stringify({ userId }),
+        data: JSON.stringify({ friendId }),
         contentType: "application/json",
         success: () => {
 
