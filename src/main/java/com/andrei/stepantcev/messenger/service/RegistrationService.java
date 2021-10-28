@@ -6,4 +6,6 @@ public interface RegistrationService {
 
     void register(RegistrationForm registrationForm);
 
+    void generateRegistrations();
+
 }

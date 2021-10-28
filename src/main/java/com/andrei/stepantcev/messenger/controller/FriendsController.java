@@ -25,9 +25,9 @@ public class FriendsController {
 
     @GetMapping("/friends/search/new")
     @ResponseBody
-    public List<UsersListRow> searchNewFriends(final @RequestParam String searchLogin, final @AuthenticationPrincipal UserDetails userDetails) {
+    public List<UsersListRow> searchNewFriends(final @RequestParam String searchFirstname, final @RequestParam String searchLastname, final @AuthenticationPrincipal UserDetails userDetails) {
         val userLogin = userDetails.getUsername();
-        return userService.searchNewFriends(userLogin, searchLogin);
+        return userService.searchNewFriends(userLogin, searchFirstname, searchLastname);
     }
 
     @PostMapping("/friends/add")

@@ -12,7 +12,7 @@ public interface UserService {
 
     List<UsersListRow> getFriends(String userLogin);
 
-    List<UsersListRow> searchNewFriends(String userLogin, String searchLogin);
+    List<UsersListRow> searchNewFriends(String userLogin, String searchFirstname, String searchLastname);
 
     void addFriend(String userLogin, Integer friendId);
 

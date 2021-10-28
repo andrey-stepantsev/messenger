@@ -1,8 +1,9 @@
-const searchUsers = (event) => {
+const searchUsers = () => {
 
-    const searchLogin = event.target.value;
+    const searchFirstname = $("#js-search-firstname").val();
+    const searchLastname = $("#js-search-lastname").val();
 
-    $.get("/friends/search/new", { searchLogin }, (response) => {
+    $.get("/friends/search/new", { searchFirstname, searchLastname }, (response) => {
 
         const searchResult = $("#js-search-result");
         const searchResultHeader = $("#js-search-result-header");
@@ -78,5 +79,5 @@ const createFriendsRow = (fullName, login) => (
     </div>`
 );
 
-$("#js-search-new-friends").on("change", searchUsers);
+$(document).on("change", "#js-search-firstname, #js-search-lastname", searchUsers);
 $(document).on("click", ".js-add-new-friend", addFriend);

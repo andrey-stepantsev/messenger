@@ -4,13 +4,17 @@ import com.andrei.stepantcev.messenger.model.RegistrationForm;
 import com.andrei.stepantcev.messenger.service.RegistrationService;
 import com.andrei.stepantcev.messenger.service.SexTypeService;
 import com.andrei.stepantcev.messenger.service.UserService;
+import java.util.function.IntConsumer;
+import java.util.stream.IntStream;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -52,5 +56,12 @@ public class RegistrationController {
         registrationService.register(registrationForm);
 
         return "redirect:/login";
+    }
+
+    @GetMapping("/registration/generate")
+    @ResponseStatus(HttpStatus.OK)
+    public void generateRegistrations() {
+        final IntConsumer generateRegistrations = (index) -> registrationService.generateRegistrations();
+        IntStream.range(0, 100).forEach(generateRegistrations);
     }
 }
