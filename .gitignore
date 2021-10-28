@@ -2,3 +2,5 @@
 
 target
 messenger.iml
+
+src/main/resources/application-prod.properties
