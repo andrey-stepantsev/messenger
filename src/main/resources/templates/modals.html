@@ -7,7 +7,14 @@
                     <button class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
                 <div class="modal-body pb-0">
-                    <input type="text" class="form-control mb-3" id="js-search-new-friends" placeholder="Найти по логину"/>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <input type="text" class="form-control" id="js-search-firstname" placeholder="Имя"/>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control" id="js-search-lastname" placeholder="Фамилия"/>
+                        </div>
+                    </div>
                     <div class="list-group list-group-flush d-none" id="js-search-result">
                         <div class="list-group-item" id="js-search-result-header">
                             <p class="text-center mb-1">Результаты поиска</p>

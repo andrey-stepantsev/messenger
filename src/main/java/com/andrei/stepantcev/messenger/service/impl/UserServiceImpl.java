@@ -50,9 +50,9 @@ public class UserServiceImpl implements UserService {
     @Override
     @SneakyThrows
     @Transactional(readOnly = true)
-    public List<UsersListRow> searchNewFriends(final String userLogin, final String searchLogin) {
+    public List<UsersListRow> searchNewFriends(final String userLogin, final String searchFirstname, final String searchLastname) {
         val query = SQLUtils.getQuery("searchNewFriends");
-        return jdbcTemplate.query(query, usersListRowMapper, searchLogin, userLogin, userLogin, userLogin);
+        return jdbcTemplate.query(query, usersListRowMapper, searchLastname, searchFirstname, userLogin, userLogin, userLogin);
     }
 
     @Override
